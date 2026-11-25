@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#17342e">
+  <title>AutoWorth | Car Price Prediction</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="navbar"><a class="brand" href="#home"><span class="brand-mark">A</span> AutoWorth<span class="dot">.</span></a><nav><a href="#how">How it works</a><a class="nav-cta" href="#predictor">Predict price ↗</a></nav></header>
+<main>
+<section class="hero" id="home"><div class="hero-copy"><span class="eyebrow"><i></i> SMARTER CAR VALUATION</span><h1>Know what your<br>car is <em>really worth.</em></h1><p>Get a data-driven resale price estimate in seconds. Add your car details and let the model do the maths.</p><a class="primary-btn" href="#predictor">Estimate my car <b>→</b></a><div class="hero-note"><span>✦</span> Machine learning powered estimate</div></div><div class="hero-art"><div class="glow"></div><div class="car-panel"><div class="panel-top"><span>MARKET INSIGHT</span><span class="active"><i></i> READY TO ESTIMATE</span></div><div class="car-emoji" aria-label="Car illustration">🚘</div><div class="panel-bottom"><div><small>YOUR NEXT STEP</small><strong>Discover your car's value</strong></div><span class="round-arrow">↗</span></div></div><div class="floating-card"><span>✳</span><div><b>AI-powered estimate</b><small>Trained on your car dataset</small></div></div></div></section>
+<section class="stats"><div><strong id="recordCount">301</strong><span>Dataset records</span></div><div><strong>7</strong><span>Car attributes analysed</span></div><div><strong>2</strong><span>Regression algorithms in notebook</span></div><div><strong>Instant</strong><span>Browser-based estimate</span></div></section>
+<section class="predict-section" id="predictor"><div class="section-intro"><span class="eyebrow dark">✳ LET'S VALUE YOUR CAR</span><h2>A few details.<br><em>A clearer price.</em></h2><p>Upload the included CSV dataset, then enter your vehicle details to calculate an estimated resale value.</p><div class="tip"><b>Before you start</b><span>Choose <code>car_data_2.csv</code> from this project folder. The model trains inside your browser.</span></div></div>
+<div class="form-card"><div class="form-title"><div><span class="step">01</span><h3>Car information</h3></div><span class="required">* REQUIRED</span></div>
+<div class="dataset-box" id="datasetStatus" role="status"><span class="status-dot"></span><div><b>Dataset not loaded</b><small>Upload car_data_2.csv to train the model.</small></div></div>
+<label class="upload-label" for="csvFile">Upload CSV dataset</label><input type="file" id="csvFile" accept=".csv,text/csv">
+<form id="carForm"><div class="form-grid">
+<label>Manufacturing year <span>*</span><input type="number" id="year" min="1900" max="2100" value="2017" required></label>
+<label>Present price (₹ Lakhs) <span>*</span><input type="number" id="presentPrice" min="0.01" step="0.01" value="8.5" required></label>
+<label>Kilometres driven <span>*</span><input type="number" id="kmsDriven" min="0" step="1" value="25000" required></label>
+<label>Previous owners <span>*</span><select id="owner"><option value="0">0 owner</option><option value="1">1 owner</option><option value="2">2 owners</option><option value="3">3 owners</option></select></label>
+<label>Fuel type <span>*</span><select id="fuel"><option>Petrol</option><option>Diesel</option><option>CNG</option></select></label>
+<label>Seller type <span>*</span><select id="seller"><option>Dealer</option><option>Individual</option></select></label>
+<label class="full">Transmission <span>*</span><select id="transmission"><option>Manual</option><option>Automatic</option></select></label>
+</div><button class="submit-btn" id="predictBtn" type="submit" disabled>Upload dataset to begin <span>→</span></button><p class="form-note">Prices are displayed in lakh units, matching the dataset.</p></form>
+<div class="result hidden" id="result" aria-live="polite"><div class="result-label">✦ YOUR ESTIMATED SELLING PRICE</div><div class="result-price" id="price">₹ 0.00 <small>Lakhs</small></div><p id="resultNote">Indicative model prediction, not a guaranteed market offer.</p><button type="button" class="text-button" id="resetBtn">↻ Change car details</button></div><p class="error" id="error" role="alert"></p>
+</div></section>
+<section class="how" id="how"><div><span class="eyebrow">SIMPLE BY DESIGN</span><h2>From car details<br>to <em>car value.</em></h2><p>Three simple steps, using the feature encoding from your supplied machine learning notebook.</p></div><div class="steps"><article><span>01</span><div class="step-icon">⌕</div><h3>Share the details</h3><p>Enter year, mileage, fuel type, transmission and other car information.</p></article><article><span>02</span><div class="step-icon">✳</div><h3>Model analyses</h3><p>Linear regression learns relationships from the uploaded dataset.</p></article><article><span>03</span><div class="step-icon">₹</div><h3>See your estimate</h3><p>Get an estimated resale price in Indian lakh units.</p></article></div></section>
+<section class="model-note"><div><span class="eyebrow dark">THE MODEL BEHIND THE ESTIMATE</span><h2>Built on your<br><em>ML project.</em></h2></div><div><p>Your notebook removes <b>Car_Name</b>, predicts <b>Selling_Price</b>, and encodes Fuel Type (Petrol=0, Diesel=1, CNG=2), Seller Type (Dealer=0, Individual=1), and Transmission (Manual=0, Automatic=1).</p><p class="disclaimer">This standalone website fits an ordinary least-squares Linear Regression model in the browser using all valid uploaded rows. It does not reproduce the notebook's 90/10 evaluation split or its separate Lasso model. Predictions are estimates only.</p></div></section>
+</main><footer><a class="brand" href="#home"><span class="brand-mark">A</span> AutoWorth<span class="dot">.</span></a><span>Car Price Prediction · Machine Learning Project</span><a href="#home">Back to top ↑</a></footer>
+<script src="script.js"></script>
+</body></html>
